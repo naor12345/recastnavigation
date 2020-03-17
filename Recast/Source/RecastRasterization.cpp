@@ -262,6 +262,7 @@ static bool rasterizeTri(const float* v0, const float* v1, const float* v2,
 		return true;
 	
 	// Calculate the footprint of the triangle on the grid's y-axis
+	// ics是倒数，看有几个cell
 	int y0 = (int)((tmin[2] - bmin[2])*ics);
 	int y1 = (int)((tmax[2] - bmin[2])*ics);
 	y0 = rcClamp(y0, 0, h-1);
@@ -374,8 +375,10 @@ bool rcRasterizeTriangles(rcContext* ctx, const float* verts, const int /*nv*/,
 	const float ics = 1.0f/solid.cs;
 	const float ich = 1.0f/solid.ch;
 	// Rasterize triangles.
+	// 逐三角面
 	for (int i = 0; i < nt; ++i)
 	{
+		// 三个顶点
 		const float* v0 = &verts[tris[i*3+0]*3];
 		const float* v1 = &verts[tris[i*3+1]*3];
 		const float* v2 = &verts[tris[i*3+2]*3];

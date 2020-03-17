@@ -46,9 +46,9 @@ private:
 	
 	std::string m_filename;
 	float m_scale;	
-	float* m_verts;
-	int* m_tris;
-	float* m_normals;
+	float* m_verts;   // 所有顶点的坐标，平铺存放，m_verts[0,1,2]是第一个点、m_verts[3,4,5]是第二个点
+	int* m_tris;    // 所有三角面的顶点索引，m_tris[0,1,2]是第一个三角面的三个顶点索引，m_tris[3,4,5]是第二个三角面的三个顶点索引
+	float* m_normals;  // 法线向量，m_normals[0,1,2]是第一个三角面的法线，m_normals[3,4,5]是第二个三角面的法线
 	int m_vertCount;
 	int m_triCount;
 };
